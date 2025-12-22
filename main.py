@@ -12,6 +12,15 @@ Usage:
 
 import sys
 
+# Pre-import pygame modules to avoid circular import issues on Python 3.14
+import pygame._sdl2
+import pygame
+pygame.init()
+
+# Pre-load low-level _freetype module (avoids sysfont circular import)
+from pygame import _freetype
+_freetype.init()
+
 
 def show_help():
     """Display available commands."""
@@ -20,6 +29,7 @@ Magical Chess ML
 ================
 
 Commands:
+    python main.py ui       Launch the Pygame Advisor UI
     python main.py demo     Run a demo showing GameState usage
     python main.py test     Run all tests
     python main.py help     Show this help message
@@ -129,6 +139,28 @@ def run_tests():
     sys.exit(result.returncode)
 
 
+def run_ui():
+    """Launch the Pygame Advisor UI."""
+    print("Starting Magical Chess Advisor UI...")
+    print("(Close the window to exit)")
+    print()
+
+    try:
+        from src.ui.advisor import MagicalChessAdvisor
+        from src.ui import MODE_ADVISOR
+
+        app = MagicalChessAdvisor(mode=MODE_ADVISOR)
+        app.run()
+
+    except ImportError as e:
+        print(f"Error: Could not import UI module: {e}")
+        print("Make sure pygame is installed: pip install pygame")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+
+
 def main():
     """Main entry point."""
     if len(sys.argv) < 2:
@@ -137,7 +169,9 @@ def main():
 
     command = sys.argv[1].lower()
 
-    if command == "demo":
+    if command == "ui":
+        run_ui()
+    elif command == "demo":
         run_demo()
     elif command == "test":
         run_tests()

@@ -42,20 +42,20 @@ def get_tier(value: int) -> str:
     Examples:
         >>> get_tier(0)
         'Empty'
-        >>> get_tier(2)
+        >>> get_tier(3)
         'Bronze'
-        >>> get_tier(5)
+        >>> get_tier(8)
         'Silver'
-        >>> get_tier(10)
+        >>> get_tier(15)
         'Gold'
     """
     if value == 0:
         return TIER_EMPTY
-    elif 1 <= value <= 3:
+    elif 1 <= value <= 6:
         return TIER_BRONZE
-    elif 4 <= value <= 6:
+    elif 7 <= value <= 12:
         return TIER_SILVER
-    else:  # value >= 7
+    else:  # value >= 13
         return TIER_GOLD
 
 

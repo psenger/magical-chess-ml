@@ -12,17 +12,28 @@
 
 ## Chess Pieces and Tiers
 
-Pieces are visually represented as chess figures with tier colors (Bronze/Silver/Gold):
+Pieces are visually represented as chess figures with tier colors (Bronze/Silver/Gold). Each tier has 6 levels representing the chess pieces:
 
-| Level | Chess Piece | Tier   | Display       |
-|-------|-------------|--------|---------------|
-| 1     | Pawn        | Bronze | B1            |
-| 2     | Knight      | Bronze | B2            |
-| 3     | Bishop      | Bronze | B3            |
-| 4     | Rook        | Silver | S4            |
-| 5     | Queen       | Silver | S5            |
-| 6     | King        | Silver | S6            |
-| 7+    | Super King  | Gold   | G7, G8, G9... |
+| Value | Chess Piece | Tier   | Display |
+|-------|-------------|--------|---------|
+| 1     | Pawn        | Bronze | B1      |
+| 2     | Knight      | Bronze | B2      |
+| 3     | Bishop      | Bronze | B3      |
+| 4     | Rook        | Bronze | B4      |
+| 5     | Queen       | Bronze | B5      |
+| 6     | King        | Bronze | B6      |
+| 7     | Pawn        | Silver | S1      |
+| 8     | Knight      | Silver | S2      |
+| 9     | Bishop      | Silver | S3      |
+| 10    | Rook        | Silver | S4      |
+| 11    | Queen       | Silver | S5      |
+| 12    | King        | Silver | S6      |
+| 13    | Pawn        | Gold   | G1      |
+| 14    | Knight      | Gold   | G2      |
+| 15    | Bishop      | Gold   | G3      |
+| 16    | Rook        | Gold   | G4      |
+| 17    | Queen       | Gold   | G5      |
+| 18    | King        | Gold   | G6      |
 
 ## Merge Rules
 
@@ -47,8 +58,8 @@ Pieces are visually represented as chess figures with tier colors (Bronze/Silver
 ### Tier Restrictions
 - **Same-tier only**: Bronze merges with Bronze, Silver with Silver, Gold with Gold
 - **Same-level only**: Must be the exact same level (e.g., three B2s, not B1+B2+B2)
-- B3 + B3 + B3 = S4 (transitions from Bronze to Silver)
-- S6 + S6 + S6 = G7 (transitions from Silver to Gold)
+- B6 + B6 + B6 = S1 (transitions from Bronze to Silver)
+- S6 + S6 + S6 = G1 (transitions from Silver to Gold)
 
 ## How Merging Works
 
@@ -98,7 +109,7 @@ Before spawning a new piece, select a multiplier:
 - **Avoid Merge-4**: Wastes a piece
 - **Wait for opportunities**: Don't rush Merge-3 if you can wait for Merge-5
 - **Watch for pulses**: Pieces pulse to indicate pending merge count
-- **Tier transitions**: Plan for B3→S4 and S6→G7 transitions
+- **Tier transitions**: Plan for B6→S1 and S6→G1 transitions
 - **Eliminate low pieces**: Prioritize merging Pawns (B1) to clear board space
 
 ## ML/Simulator Design Notes
